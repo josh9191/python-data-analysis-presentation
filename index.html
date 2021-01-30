@@ -22,7 +22,8 @@
 			<div class="slides">
                 <section>
                     <h1>Python 기초</h1>
-                    <a href="#/2" class="fragment">Python 소개</a>
+                    <a href="#/1" class="fragment">Python 소개</a>
+                    <a href="#/3" class="fragment">개발환경 설정</a>
                     <a href="#/2" class="fragment">Python 자료형</a>
                     <a href="#/2" class="fragment">조건문</a>
                     <a href="#/2" class="fragment">반복문</a>
@@ -30,6 +31,7 @@
                     <a href="#/2" class="fragment">클래스</a>
                     <a href="#/2" class="fragment">모듈</a>
                 </section>
+
 				<section>
                     <h2>Python 소개</h2>
                     <p class="fragment">Life is too short. You need Python.</p>
@@ -49,6 +51,42 @@ print("Hello, World!")
                     </code></pre>
                     <p class="fragment">간결하고 생산성이 좋은 언어</p>
                 </section>
+
+                <section>
+                    <h2>Python 소개</h2>
+                    <p class="fragment">수많은 수치해석 / 머신러닝 라이브러리</p>
+                    <div class="fragment">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/NumPy_logo_2020.svg/2560px-NumPy_logo_2020.svg.png" height="100" style="margin: auto; display: inline-block;" />
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Pandas_logo.svg/512px-Pandas_logo.svg.png" height="100" style="margin: auto; display: inline-block;" />
+                    </div>
+                    <div class="fragment">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/PyTorch_logo_black.svg/220px-PyTorch_logo_black.svg.png" height="100" style="margin: auto; display: inline-block;" />
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/TensorFlowLogo.svg/220px-TensorFlowLogo.svg.png" height="100" style="margin: auto; display: inline-block;" />
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Keras_logo.svg/180px-Keras_logo.svg.png" height="100" style="margin: auto; display: inline-block;" />
+                    </div>
+                </section>
+
+                <section>
+                    <h2>개발환경 설정</h2>
+                    <p class="fragment" style="color: darkorange;">Google Colab</p>
+                    <p class="fragment">Why?</p>
+                    <p class="fragment">로컬 PC에 Python, 라이브러리 등을 설치할 필요가 없음</p>
+                    <p class="fragment">Jupyter Notebook 기반</p>
+                    <p class="fragment">나쁘지 않은 성능</p>
+                </section>
+
+                <section>
+                    <h2>개발환경 설정</h2>
+                    <p class="fragment">https://colab.research.google.com</p>
+                    <div class="fragment">
+                        <img src="images/01-google-colab.png" height="250" style="display: inline-block;">
+                        <img src="images/02-first-colab-notebook.png" height="250" style="display: inline-block;">
+                    </div>
+                    <div class="fragment">
+                        <img src="images/03-colab-find-in-google-drive.png" height="100" style="display: inline-block;">
+                        <img src="images/04-colab-in-google-drive.png" height="150" style="display: inline-block;">
+                    </div>
+                </section>
 			</div>
 		</div>
 
@@ -60,7 +98,7 @@ print("Hello, World!")
 			Reveal.initialize({
 				hash: true,
 
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+                plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
 			});
 		</script>
 	</body>
