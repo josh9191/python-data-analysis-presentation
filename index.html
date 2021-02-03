@@ -196,6 +196,8 @@ x[1] # 'b'
 x[2:] # 'c'
 x[-1] # 'c'
 x[1:3] # 'ef'
+# 아래는 잘못된 연산입니다.
+# x[1] = 'd'
                         </code></pre>
                     </div>
                 </section>
@@ -220,6 +222,63 @@ x.replace("this", "that") # 'that is a string'
                     <h2>Python 자료형</h2>
                     <p>같이 코딩해봅시다 - 문자열</p>
                     <a href="https://colab.research.google.com/drive/1OrhFCHdl_fQPvlIPcq3ghB_dxtnmplr9?usp=sharing" target="_blank">코드</a>
+                </section>
+
+                <section>
+                    <h2>Python 자료형</h2>
+                    <div class="fragment">
+                        <p>리스트</p>
+                        <pre class="python"><code data-trim data-noescape>
+l = []
+l = [1, 2, 3]
+l = ["a", 1, 6]
+l = [[1, 2], [3, 4]]
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Python 자료형</h2>
+                    <div class="fragment">
+                        <p>리스트 연산</p>
+                        <pre class="python"><code data-trim data-noescape>
+l1, l2 = [1, 2, 3], [4, 5, 6]
+
+l1 + l2 # [1, 2, 3, 4, 5, 6]
+l1 * 2 # [1, 2, 3, 1, 2, 3]
+
+l1[0] # 1
+l1[-1] # 3
+l1[1:3] # [2, 3]
+len(l1) # 3
+l1[2] = 1 # [1, 2, 1]
+
+del l2[0] # [5, 6]
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Python 자료형</h2>
+                    <div class="fragment">
+                        <p>리스트 관련 함수</p>
+                        <pre class="python"><code data-trim data-noescape>
+l = [6, 2, 3]
+
+l.append(1) # [6, 2, 3, 1]
+l.sort() # [1, 2, 3, 6]
+l.reverse() # [6, 3, 2, 1]
+l.insert(0, 2) # [2, 6, 3, 2, 1]
+l.remove(2) # [6, 3, 2, 1]
+l.extend([4, 5]) # [6, 3, 2, 1, 4, 5]
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Python 자료형</h2>
+                    <p>같이 코딩해봅시다 - 리스트</p>
+                    <a href="https://colab.research.google.com/drive/1IhbZm0P_3s3EvccU5CDThBEOT4lTvvlG?usp=sharing" target="_blank">코드</a>
                 </section>
 
 			</div>
