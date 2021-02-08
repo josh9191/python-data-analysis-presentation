@@ -22,19 +22,21 @@
 			<div class="slides">
                 <section>
                     <h1>Python 기초</h1>
-                    <a href="#/1" class="fragment">Python 소개</a>
-                    <a href="#/3" class="fragment">개발환경 설정</a>
-                    <a href="#/2" class="fragment">Python 자료형</a>
-                    <a href="#/2" class="fragment">조건문</a>
-                    <a href="#/2" class="fragment">반복문</a>
-                    <a href="#/2" class="fragment">함수</a>
-                    <a href="#/2" class="fragment">클래스</a>
-                    <a href="#/2" class="fragment">모듈</a>
+                    <div class="fragment">
+                        <a href="#/1" style="display: block;">Python 소개</a>
+                        <a href="#/3" style="display: block;">개발환경 설정</a>
+                        <a href="#/6" style="display: block;">Python 자료형</a>
+                        <a href="#/25" style="display: block;">조건문</a>
+                        <a href="#/2" style="display: block;">반복문</a>
+                        <a href="#/2" style="display: block;">함수</a>
+                        <a href="#/2" style="display: block;">클래스</a>
+                        <a href="#/2" style="display: block;">모듈</a>
+                    </div>
                 </section>
 
 				<section>
                     <h2>Python 소개</h2>
-                    <p class="fragment">Life is too short. You need Python.</p>
+                    <p>Life is too short. You need Python.</p>
                     <pre class="fragment"><code data-trim data-noescape>
 // Java
 package me.josh9191;
@@ -54,7 +56,7 @@ print("Hello, World!")
 
                 <section>
                     <h2>Python 소개</h2>
-                    <p class="fragment">수많은 수치해석 / 머신러닝 라이브러리</p>
+                    <p>수많은 수치해석 / 머신러닝 라이브러리</p>
                     <div class="fragment">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/NumPy_logo_2020.svg/2560px-NumPy_logo_2020.svg.png" height="100" style="margin: auto; display: inline-block;" />
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Pandas_logo.svg/512px-Pandas_logo.svg.png" height="100" style="margin: auto; display: inline-block;" />
@@ -77,7 +79,7 @@ print("Hello, World!")
 
                 <section>
                     <h2>개발환경 설정</h2>
-                    <p class="fragment">https://colab.research.google.com</p>
+                    <p>https://colab.research.google.com</p>
                     <div class="fragment">
                         <img src="images/01-google-colab.png" height="250" style="display: inline-block;">
                         <img src="images/02-first-colab-notebook.png" height="250" style="display: inline-block;">
@@ -97,8 +99,8 @@ print("Hello, World!")
 
                 <section>
                     <h2>Python 자료형</h2>
-                    <div class="fragment">
-                        <p>정수형</p>
+                    <div>
+                        <h3>정수형</h3>
                         <pre class="python"><code data-trim data-noescape>
 int_var = 30
 int_var = 0
@@ -106,7 +108,7 @@ int_var = -12
                         </code></pre>
                     </div>
                     <div class="fragment">
-                        <p>실수형</p>
+                        <h3>실수형</h3>
                         <pre class="python"><code data-trim data-noescape>
 float_var = 1234.567
 float_var = -59.12
@@ -117,8 +119,8 @@ float_var = 1e-5
 
                 <section>
                     <h2>Python 자료형</h2>
-                    <div class="fragment">
-                        <p>기타 숫자형</p>
+                    <div>
+                        <h3>기타 숫자형</h3>
                         <pre class="python"><code data-trim data-noescape>
 oct_var = 0o13
 hex_var = 0x2f
@@ -126,7 +128,7 @@ hex_var = 0x2f
                     </div>
 
                     <div class="fragment">
-                        <p>불리언형</p>
+                        <h3>불리언형</h3>
                         <pre class="python"><code data-trim data-noescape>
 a = True
 b = False
@@ -138,8 +140,8 @@ a or b # True
 
                 <section>
                     <h2>Python 자료형</h2>
-                    <div class="fragment">
-                        <p>수치 및 비교연산</p>
+                    <div>
+                        <h3>수치 및 비교연산</h3>
                         <pre class="python"><code data-trim data-noescape>
 x, y = 2, 4
 
@@ -167,8 +169,8 @@ x <= y # True
 
                 <section>
                     <h2>Python 자료형</h2>
-                    <div class="fragment">
-                        <p>문자열</p>
+                    <div>
+                        <h3>문자열</h3>
                         <pre class="python"><code data-trim data-noescape>
 s1 = 'example string'
 s2 = "double quotes"
@@ -185,8 +187,8 @@ s4 = ("This is an\n"
 
                 <section>
                     <h2>Python 자료형</h2>
-                    <div class="fragment">
-                        <p>문자열 연산</p>
+                    <div>
+                        <h3>문자열 연산</h3>
                         <pre class="python"><code data-trim data-noescape>
 x, y = "abc", "def"
 
@@ -204,8 +206,8 @@ x[1:3] # 'ef'
                 
                 <section>
                     <h2>Python 자료형</h2>
-                    <div class="fragment">
-                        <p>문자열 관련 함수</p>
+                    <div>
+                        <h3>문자열 관련 함수</h3>
                         <pre class="python"><code data-trim data-noescape>
 x = "this is a string"
 
@@ -226,8 +228,8 @@ x.replace("this", "that") # 'that is a string'
 
                 <section>
                     <h2>Python 자료형</h2>
-                    <div class="fragment">
-                        <p>리스트</p>
+                    <div>
+                        <h3>리스트</h3>
                         <pre class="python"><code data-trim data-noescape>
 l = []
 l = [1, 2, 3]
@@ -239,8 +241,8 @@ l = [[1, 2], [3, 4]]
 
                 <section>
                     <h2>Python 자료형</h2>
-                    <div class="fragment">
-                        <p>리스트 연산</p>
+                    <div>
+                        <h3>리스트 연산</h3>
                         <pre class="python"><code data-trim data-noescape>
 l1, l2 = [1, 2, 3], [4, 5, 6]
 
@@ -260,8 +262,8 @@ del l2[0] # [5, 6]
 
                 <section>
                     <h2>Python 자료형</h2>
-                    <div class="fragment">
-                        <p>리스트 관련 함수</p>
+                    <div>
+                        <h3>리스트 관련 함수</h3>
                         <pre class="python"><code data-trim data-noescape>
 l = [6, 2, 3]
 
@@ -277,8 +279,551 @@ l.extend([4, 5]) # [6, 3, 2, 1, 4, 5]
 
                 <section>
                     <h2>Python 자료형</h2>
-                    <p>같이 코딩해봅시다 - 리스트</p>
+                    <h3>같이 코딩해봅시다 - 리스트</h3>
                     <a href="https://colab.research.google.com/drive/1IhbZm0P_3s3EvccU5CDThBEOT4lTvvlG?usp=sharing" target="_blank">코드</a>
+                </section>
+
+                <section>
+                    <h2>Python 자료형</h2>
+                    <div>
+                        <h3>튜플</h3>
+                        <pre class="python"><code data-trim data-noescape>
+t = (1, 2, "a")
+t = (3, 4)
+                        </code></pre>
+                    </div>
+
+                    <div class="fragment">
+                        <h3>튜플 연산</h3>
+                        <pre class="python"><code data-trim data-noescape>
+t1, t2 = (1, 2, 3), (4, 5)
+t1 + t2 # (1, 2, 3, 4, 5)
+t1 * 2 # (1, 2, 3, 1, 2, 3)
+len(t1) # 3
+# 아래는 잘못된 연산입니다.
+# t1[0] = 1
+# del t1[1]
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Python 자료형</h2>
+                    <div>
+                        <h3>딕셔너리</h3>
+                        <pre class="python"><code data-trim data-noescape>
+d = {"a": 1, "b": 2, "c": 3}
+d = {"a": [1, 2], "b": "s", 1: 2}
+                        </code></pre>
+                    </div>
+
+                    <div class="fragment">
+                        <h3>딕셔너리 연산</h3>
+                        <pre class="python"><code data-trim data-noescape>
+d = {"x": 1, "y": 2, 3: "c"}
+d["x"] # 1
+d[3] # 'c'
+"x" in d # True
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Python 자료형</h2>
+                    <div>
+                        <h3>딕셔너리 관련 함수</h3>
+                        <pre class="python"><code data-trim data-noescape>
+d = {1: "a", 2: "b"}
+d.keys() # dict_keys([1, 2])
+d.values() # dict_values(['a', 'b'])
+d.items() # dict_items([(1, 'a'), (2, 'b')])
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Python 자료형</h2>
+                    <p>같이 코딩해봅시다 - 튜플, 딕셔너리</p>
+                    <a href="https://colab.research.google.com/drive/1zSpO36qHocqqB3mjtEWjUJaIxh-gNyS4?usp=sharing" target="_blank">코드</a>
+                </section>
+
+                <section>
+                    <h2>Python 자료형</h2>
+                    <div>
+                        <h3>집합</h3>
+                        <pre class="python"><code data-trim data-noescape>
+s = {1, 2, 3}
+s = set(["a", "b"])
+s = set((3, 4, 5))
+                        </code></pre>
+                    </div>
+
+                    <div class="fragment">
+                        <h3>집합 연산</h3>
+                        <pre class="python"><code data-trim data-noescape>
+s1, s2 = {1, 2, 3}, {2, 3, 4}
+s1 & s2 # {2, 3}
+s1.intersection(s2) # {2, 3}
+s1 | s2 # {1, 2, 3, 4}
+s1.union(s2) # {1, 2, 3, 4}
+s1 - s2 # {1}
+s1.difference(s2) # {1}
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Python 자료형</h2>
+                    <div>
+                        <h3>집합 관련 함수</h3>
+                        <pre class="python"><code data-trim data-noescape>
+s = set(["a", "b", "c"])
+s.add("d") # {'a', 'b', 'c', 'd'}
+s.update(["b", "e"]) # {'a', 'b', 'c', 'd', 'e'}
+s.remove("c") # {'a', 'b', 'd', 'e'}
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Python 자료형</h2>
+                    <p>같이 코딩해봅시다 - 집합</p>
+                    <a href="https://colab.research.google.com/drive/1rAn3QTWPW77Mlz0JqXZFySrOZhQS8qEG?usp=sharing" target="_blank">코드</a>
+                </section>
+
+                <section>
+                    <h2>조건문</h2>
+                    <div>
+                        <h3>if - elif - else</h3>
+                        <pre class="python"><code data-trim data-noescape>
+x = 2
+if x > 2:
+    print("Greater than 2.")
+elif x == 2:
+    print("Equals to 2.")
+else:
+    print("Smaller than 2.")
+# Equals to 2.
+                        </code></pre>
+
+                        <pre class="python"><code data-trim data-noescape>
+x = "a"
+if x == "a" or x == "b":
+    if x == "a":
+        print("A")
+    else:
+        print("B")
+# A
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>조건문</h2>
+                    <div>
+                        <h3>조건부 표현식</h3>
+                        <pre class="python"><code data-trim data-noescape>
+score = 80
+if score >= 60:
+    passed = True
+else:
+    passed = False
+
+# same code as above
+passed = True if score >= 60 else False
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>조건문</h2>
+                    <div>
+                        <h3>퀴즈</h3>
+                        <p>주민등록번호를 받아 성별을 출력(1, 3: 남자, 2, 4: 여자)</p>
+                        <pre class="python"><code data-trim data-noescape>
+# [예시 입력]
+id = "800101-2345678"
+# [예시 출력]
+# "남자"
+# 답은 다음장 링크에서 나옵니다.
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>조건문</h2>
+                    <p>같이 코딩해봅시다 - 조건문</p>
+                    <a href="https://colab.research.google.com/drive/1Z9z3hfgS7BBifEp_jIpd-CWcLiZ2wCso?usp=sharing" target="_blank">코드</a>
+                </section>
+
+                <section>
+                    <h2>반복문</h2>
+                    <div>
+                        <h3>for</h3>
+                        <pre class="python"><code data-trim data-noescape>
+l = [1, 2]
+for elem in l:
+    print(elem)
+# 1
+# 2
+                        </code></pre>
+                        <pre class="python"><code data-trim data-noescape>
+sum = 0
+for i in range(0, 5):
+    sum += i
+print(sum) # 10                          
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>반복문</h2>
+                    <div>
+                        <h3>for</h3>
+                        <p>리스트를 반복할 때 인덱스를 같이 가져올 수 있을까?</p>
+                    </div>
+
+                    <pre class="python fragment"><code data-trim data-noescape>
+l = ["a", "b", "c"]
+for idx, elem in enumerate(l):
+    print(f"Index: {idx}, Value: {elem}")
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>반복문</h2>
+                    <div>
+                        <h3>for</h3>
+                        <p>딕셔너리의 각 원소를 가져올 때는 어떻게 할까?</p>
+                        <p>힌트: 딕셔너리의 keys() 혹은 items() 이용</p>
+                    </div>
+
+                    <pre class="python fragment"><code data-trim data-noescape>
+d = {1: "A", 2: "B", 3: "C"}
+for k in d.keys():
+    print(k, ":", d[k])
+
+for k, v in d.items():
+    print(k, ":", v)
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>반복문</h2>
+                    <div>
+                        <h3>List comprehension</h3>
+                        <p>리스트를 생성하기 위한 간략한 syntax 제공</p>
+                        <pre class="python"><code data-trim data-noescape>
+l1 = [x for x in range(1, 4)]
+# [1, 2, 3]
+                        
+l2 = [x for x in range(1, 5) if x % 2 == 0]
+# [2, 4]
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>반복문</h2>
+                    <div>
+                        <h3>continue</h3>
+                        <pre class="python"><code data-trim data-noescape>
+for i in range(5):
+    if i % 2 == 0:
+        continue
+    print(i)
+# 1
+# 3
+                        </code></pre>
+                    </div>
+                    <div class="fragment">
+                        <h3>break</h3>
+                        <pre class="python"><code data-trim data-noescape>
+for i in range(5):
+    if i >= 2:
+        break
+    print(i)
+# 0
+# 1
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>반복문</h2>
+                    <div>
+                        <h3>while</h3>
+                        <pre class="python"><code data-trim data-noescape>
+cnt = 0
+while cnt < 2:
+    cnt += 1
+    print(cnt)
+# 1
+# 2                            
+                        </code></pre>
+                    </div>
+                    <pre class="python fragment"><code data-trim data-noescape>
+cnt = 0
+while True:
+    cnt += 1
+    print(cnt)
+    if cnt >= 2:
+        break
+# 1
+# 2                                               
+                    </code></pre>
+
+                </section>
+
+                <section>
+                    <h2>반복문</h2>
+                    <div>
+                        <h3>퀴즈</h3>
+                        <p>문자열 리스트를 입력으로 받아 5글자 이상인 단어만 출력</p>
+                        <pre class="python"><code data-trim data-noescape>
+# [예시 입력]
+input_list = ["apple", "banana", "cat", "dog", "elephant"]
+# [예시 출력]
+# 'apple'
+# 'banana'
+# 'elephant'
+# 답은 다다음장 링크에서 나옵니다.
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>반복문</h2>
+                    <div>
+                        <h3>퀴즈 - 2</h3>
+                        <p>딕셔너리(키: 문자열, 값: 정수)를 입력으로 받아 값이 홀수인 키만 리스트로 생성</p>
+                        <pre class="python"><code data-trim data-noescape>
+# [예시 입력]
+input_dict = {"A": 3, "B": 2, "C": 19, "D": 32, "E": 55}
+# [예시 결과]
+# answer = ["A", "C", "E"]
+# 답은 다음장 링크에서 나옵니다.
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>반복문</h2>
+                    <p>같이 코딩해봅시다 - 반복문</p>
+                    <a href="https://colab.research.google.com/drive/11mftsMzc8cRTIG54gCFeVpXtD_Ow3A8F?usp=sharing" target="_blank">코드</a>
+                </section>
+
+                <section>
+                    <h2>함수</h2>
+                    <div>
+                        <h3>함수</h3>
+                        <pre class="python"><code data-trim data-noescape>
+def add(a, b):
+    return a + b
+added = add(1, 2)
+print(added) # 3
+added_2 = add(a=2, b=3)
+print(added_2) # 3
+                                            
+                        </code></pre>
+                    </div>
+                    <pre class="python fragment"><code data-trim data-noescape>
+def no_args():
+    return 1
+result = no_args()
+print(result) # 1
+                    </code></pre>
+
+                    <pre class="python fragment"><code data-trim data-noescape>
+def no_return(a, b):
+    print(a + b)
+no_return(1, 2) # 3                    
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>함수</h2>
+                    <div>
+                        <h3>여러 개의 값을 리턴</h3>
+                        <pre class="python"><code data-trim data-noescape>
+def swap(x, y):
+    return y, x
+a = 1
+b = 2
+a, b = swap(a, b)
+print((a, b)) # (2, 1)
+# 실제로는 튜플 하나가 리턴됩니다.
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>함수</h2>
+                    <div>
+                        <h3>재귀</h3>
+                        <p>자기 자신을 호출하는 함수</p>
+                        <pre class="python"><code data-trim data-noescape>
+# 재귀가 없는 일반 형태
+def factorial_norec(n):
+    answer = 1
+    for i in range(2, n + 1):
+        answer *= i
+    return answer
+                        </code></pre>
+                    </div>
+
+                    <pre class="python fragment"><code data-trim data-noescape>
+# 재귀 형태
+def factorial_rec(n):
+    # 종료 조건
+    if n <= 1:
+        return 1
+    return n * factorial_rec(n - 1)
+                    </code></pre>
+                </section>
+                
+                <section>
+                    <h2>함수</h2>
+                    <div>
+                        <h3>퀴즈</h3>
+                        <p>두 숫자형을 입력으로 받아 최대값을 반환하는 함수 작성</p>
+                        <pre class="python"><code data-trim data-noescape>
+# [함수 스켈레톤]
+def my_max(a, b):
+    # ...
+# 답은 다다음장 링크에서 나옵니다.
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>함수</h2>
+                    <div>
+                        <h3>퀴즈 - 2</h3>
+                        <p>세 숫자형을 입력으로 받아 최대값을 반환하는 함수 작성</p>
+                        <pre class="python"><code data-trim data-noescape>
+# [함수 스켈레톤]
+def my_max2(a, b, c):
+    # ...
+# 답은 다음장 링크에서 나옵니다.
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>함수</h2>
+                    <p>같이 코딩해봅시다 - 함수</p>
+                    <a href="https://colab.research.google.com/drive/1ENn0_osWaoVipu2zv0VFg8MInBb7gS-_?usp=sharing" target="_blank">코드</a>
+                </section>
+
+                <section>
+                    <h2>클래스</h2>
+                    <div>
+                        <h3>클래스 정의</h3>
+                        <p>객체는 실세계의 사물을 표현하는데, 속성과 행위를 포함한다.</p>
+                        <p>이러한 객체를 만들기 위한 설계도를 클래스라 함</p>
+                        <pre class="python"><code data-trim data-noescape>
+class Stack:
+    # ... more codes ...
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>클래스</h2>
+                    <div>
+                        <h3>생성자 및 멤버 변수 정의</h3>
+                        <pre class="python"><code data-trim data-noescape>
+class Stack:
+def __init__(self):
+    self.l = []
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>클래스</h2>
+                    <div>
+                        <h3>메서드 정의</h3>
+                        <pre class="python"><code data-trim data-noescape>
+class Stack:
+    def __init__(self):
+        self.l = []
+    def push(self, new_elem):
+        self.l.append(new_elem)
+    def pop(self):
+        popped = self.l[-1]
+        del self.l[-1]
+        return popped
+    def top(self):
+        return self.l[-1]
+    def is_empty(self):
+        return len(self.l) == 0
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>클래스</h2>
+                    <div>
+                        <h3>객체 생성 및 메서드 호출</h3>
+                        <pre class="python"><code data-trim data-noescape>
+s = Stack()
+print(s.is_empty())
+s.push(1)
+s.push(2)
+print(s.top())  
+s.pop()
+s.pop()
+print(s.is_empty())
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>클래스</h2>
+                    <p>같이 코딩해봅시다 - 클래스</p>
+                    <a href="https://colab.research.google.com/drive/1VABUx9uTCewuv1eEBoflCqHD2sBFyd3X?usp=sharing" target="_blank">코드</a>
+                </section>
+
+                <section>
+                    <h2>모듈</h2>
+                    <p>모듈은 함수, 변수, 클래스를 모아 놓은 파일로, 다른 파이썬 코드에서 불러와 사용할 수 있습니다.</p>
+                    <div>
+                        <h3>모듈 불러오기</h3>
+                        <pre class="python"><code data-trim data-noescape>
+import math
+print(math.ceil(3.2)) # 4
+print(math.pow(3, 2)) # 9.0
+                        </code></pre>
+                    </div>
+
+                    <div class="fragment">
+                        <h3>모듈 불러오기 - 2</h3>
+                        <pre class="python"><code data-trim data-noescape>
+import math as m
+print(m.ceil(3.2)) # 4
+print(m.pow(3, 2)) # 9.0
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>모듈</h2>
+                    <div>
+                        <h3>모듈 내 함수 불러오기</h3>
+                        <pre class="python"><code data-trim data-noescape>
+from math import ceil, pow
+print(ceil(3.2)) # 4
+print(pow(3, 2)) # 9.0
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>모듈</h2>
+                    <p>같이 코딩해봅시다 - 모듈</p>
+                    <a href="https://colab.research.google.com/drive/14yUrS7wsG_0XGRknACW5ApfihyPfhW6R?usp=sharing" target="_blank">코드</a>
                 </section>
 
 			</div>
