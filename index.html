@@ -826,6 +826,76 @@ print(pow(3, 2)) # 9.0
                     <a href="https://colab.research.google.com/drive/14yUrS7wsG_0XGRknACW5ApfihyPfhW6R?usp=sharing" target="_blank">코드</a>
                 </section>
 
+                <!-- Section 2 - Pandas/NumPy로 데이터 다루기 -->
+
+                <section>
+                    <h1>Pandas/NumPy로 &nbsp; 데이터 다루기</h1>
+                    <div class="fragment">
+                        <a href="#/1" style="display: block;">Pandas 소개</a>
+                        <a href="#/3" style="display: block;">유용한 Pandas 함수들</a>
+                        <a href="#/6" style="display: block;">NumPy 소개</a>
+                        <a href="#/25" style="display: block;">유용한 NumPy 함수들</a>
+                        <a href="#/2" style="display: block;">Pandas/Numpy를 이용한 데이터 전처리</a>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Pandas 소개</h2>
+                    <div>
+                        <h3>Series</h3>
+                        <p>1차원 배열과 동일한 자료구조</p>
+                        <pre class="python"><code data-trim data-noescape>
+import pandas as pd
+s = pd.Series([1, 3])
+print(s)
+'''
+0  1
+1  3
+dtype: int64
+'''
+                        </code></pre>
+                    </div>
+                    <pre class="python fragment"><code data-trim data-noescape>
+s = pd.Series([1, 3], index=["a", "b"])
+print(s)
+'''
+a  1
+b  3
+dtype: int64
+'''
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Pandas 소개</h2>
+                    <div>
+                        <h3>DataFrame</h3>
+                        <p>행과 열로 구성된 2차원 자료구조</p>
+                        <pre class="python"><code data-trim data-noescape>
+import pandas as pd
+df = pd.DataFrame({"A": [1, 2], "B": ["a", "b"], "C": [2.3, 1.2]})
+print(df)
+'''
+   A  B  C
+0  1  a  2.3
+1  2  b  1.2
+'''
+print(df["A"])
+'''
+0  1
+1  2
+Name: A, dtype: int64
+'''
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Pandas 소개</h2>
+                    <p>같이 코딩해봅시다 - Pandas Series / DataFrame</p>
+                    <a href="고치기" target="_blank">코드</a>
+                </section>
+
 			</div>
 		</div>
 
