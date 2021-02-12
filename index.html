@@ -870,7 +870,7 @@ dtype: int64
                     <h2>Pandas 소개</h2>
                     <div>
                         <h3>DataFrame</h3>
-                        <p>행과 열로 구성된 2차원 자료구조</p>
+                        <p>행과 열로 구성된 자료구조</p>
                         <pre class="python"><code data-trim data-noescape>
 import pandas as pd
 data = {"A": [1, 2], "B": ["a", "b"], "C": [2.3, 1.2]}
@@ -894,7 +894,7 @@ Name: A, dtype: int64
                 <section>
                     <h2>Pandas 소개</h2>
                     <p>같이 코딩해봅시다 - Pandas Series / DataFrame</p>
-                    <a href="고치기" target="_blank">코드</a>
+                    <a href="https://colab.research.google.com/drive/1m_UGAXOfbZiS_WYYl6JVcN8LFv4c6IFT?usp=sharing" target="_blank">코드</a>
                 </section>
 
                 <section>
@@ -904,17 +904,18 @@ Name: A, dtype: int64
                         <p>CSV 파일을 DataFrame으로 읽어들임</p>
                         <pre class="python"><code data-trim data-noescape>
 import pandas as pd
-csv_file_path = "http://samplecsvs.s3.amazonaws.com/Sacramentorealestatetransactions.csv"
-df = pd.read_csv(csv_file_path, sep=",", nrows=5)
+base_url = "https://download.mlcc.google.com"
+csv_file_url = base_url + "/mledu-datasets/california_housing_train.csv"
+df = pd.read_csv(csv_file_url, sep=",")
 print(df)
 '''
-street city zip state ... longitude
-0 3526 HIGH ST SACRAMENTO 95838 CA ... 121.434879
-1 51 OMAHA CT SACRAMENTO 95823 CA ... 121.431028
-2 2796 BRANCH ST SACRAMENTO 95815 CA ... 121.443839
-3 2805 JANETTE WAY SACRAMENTO 95815 CA ... 121.439146
-4 6001 MCMAHON DR SACRAMENTO 95824 CA ... 121.435768
-[5 rows x 12 columns]
+       longitude  latitude  ...  median_income  median_house_value
+0        -114.31     34.19  ...         1.4936             66900.0
+1        -114.47     34.40  ...         1.8200             80100.0
+...          ...       ...  ...            ...                 ...
+16998    -124.30     41.80  ...         1.9797             85800.0
+16999    -124.35     40.54  ...         3.0147             94600.0
+[17000 rows x 9 columns]
 '''
                         </code></pre>
                     </div>
@@ -926,7 +927,7 @@ street city zip state ... longitude
                         <h3>to_csv</h3>
                         <p>DataFrame을 CSV 파일로 추출</p>
                         <pre class="python"><code data-trim data-noescape>
-df.to_csv("./estate_price.csv", sep="|", index=False)
+df.to_csv("./my-housing-data.csv", sep="|", index=False)
                         </code></pre>
                     </div>
 
@@ -936,10 +937,10 @@ df.to_csv("./estate_price.csv", sep="|", index=False)
                         <pre class="python"><code data-trim data-noescape>
 print(df.head(n=2))
 '''
-street city zip ... longitude
-0 3526 HIGH ST SACRAMENTO 95838 ... -121.434879
-1 51 OMAHA CT SACRAMENTO 95823 ... -121.431028
-[2 rows x 12 columns]
+   longitude  latitude  ...  median_income  median_house_value
+0    -114.31     34.19  ...         1.4936             66900.0
+1    -114.47     34.40  ...         1.8200             80100.0
+[2 rows x 9 columns]
 '''
                         </code></pre>
                     </div>
@@ -952,11 +953,17 @@ street city zip ... longitude
                         <p>정수 position을 이용해 인덱싱</p>
                         <pre class="python"><code data-trim data-noescape>
 print(df.iloc[:2])
-#
+'''
+longitude  latitude  ...  median_income  median_house_value
+0    -114.31     34.19  ...         1.4936             66900.0
+1    -114.47     34.40  ...         1.8200             80100.0
+'''
 print(df.iloc[[1, 2], [0, 1]])
-#
-print(df.iloc[:, 1:3])
-#
+'''
+longitude  latitude
+1    -114.47     34.40
+2    -114.56     33.69
+'''
                         </code></pre>
                     </div>
                 </section>
@@ -967,12 +974,460 @@ print(df.iloc[:, 1:3])
                         <h3>loc</h3>
                         <p>label을 이용해 인덱싱</p>
                         <pre class="python"><code data-trim data-noescape>
-print(df.loc[0, "city"])
-# 
+print(df.loc[0, "median_house_value"])
+# 66900.0
 print(df.loc[:2, ["street", "city", "zip"]])
-#
+'''
+   longitude  latitude  median_income
+0    -114.31     34.19         1.4936
+1    -114.47     34.40         1.8200
+2    -114.56     33.69         1.6509
+'''
                         </code></pre>
                     </div>
+                </section>
+
+                <section>
+                    <h2>유용한 Pandas 함수들</h2>
+                    <div>
+                        <h3>boolean 인덱싱</h3>
+                        <p>특정 조건에 따라 행을 선택</p>
+                        <pre class="python"><code data-trim data-noescape>
+mask = df["housing_median_age"] < 17
+print(mask)
+'''
+0         True
+1        False
+         ...
+16998    False
+16999    False
+Name: housing_median_age, Length: 17000, dtype: bool
+'''
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>유용한 Pandas 함수들</h2>
+                    <div>
+                        <h3>boolean 인덱싱</h3>
+                        <pre class="python"><code data-trim data-noescape>
+mask = df["housing_median_age"] < 17
+print(df.loc[mask, :])
+'''
+       longitude  latitude  ...  median_income  median_house_value
+0        -114.31     34.19  ...         1.4936             66900.0
+3        -114.57     33.64  ...         3.1917             73400.0
+...          ...       ...  ...            ...                 ...
+16983    -124.19     41.78  ...         1.6654             74600.0
+16991    -124.23     41.75  ...         2.4805             73200.0
+[3360 rows x 9 columns]
+'''
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>유용한 Pandas 함수들</h2>
+                    <div>
+                        <h3>boolean 인덱싱</h3>
+                        <p>여러 개의 조건 설정</p>
+                        <pre class="python"><code data-trim data-noescape>
+and_mask = (df["housing_median_age"] < 17) \
+            & (df["median_house_value"] < 70000)
+print(df.loc[and_mask, :])
+'''
+       longitude  latitude  ...  median_income  median_house_value
+0        -114.31     34.19  ...         1.4936             66900.0
+14       -114.63     32.76  ...         0.8585             45000.0
+...          ...       ...  ...            ...                 ...
+16834    -123.32     40.43  ...         0.4999             56700.0
+16957    -124.16     41.74  ...         2.1829             69500.0
+[128 rows x 9 columns]
+'''
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>유용한 Pandas 함수들</h2>
+                    <div>
+                        <h3>boolean 인덱싱</h3>
+                        <p>여러 개의 조건 설정</p>
+                        <pre class="python"><code data-trim data-noescape>
+or_mask = (df["total_rooms"] > 6000) | (df["total_bedrooms"] > 1500)
+print(df.loc[or_mask, :])
+'''
+longitude  latitude  ...  median_income  median_house_value
+1        -114.47     34.40  ...         1.8200             80100.0
+133      -116.06     34.15  ...         2.2466             66800.0
+...          ...       ...  ...            ...                 ...
+16679    -122.79     38.48  ...         3.1662            191000.0
+16692    -122.82     38.55  ...         3.8616            195100.0
+[1016 rows x 9 columns]
+'''
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Pandas 소개</h2>
+                    <p>같이 코딩해봅시다 - Pandas 함수 1</p>
+                    <a href="https://colab.research.google.com/drive/1ef6HPI41PJxA1F1OBwS5nzJVIAfjQJHQ?usp=sharing" target="_blank">코드</a>
+                </section>
+
+                <section>
+                    <h2>유용한 Pandas 함수들</h2>
+                    <div>
+                        <h3>drop</h3>
+                        <p>특정 행이나 열을 삭제하여 반환</p>
+                        <pre class="python"><code data-trim data-noescape>
+print(len(df), len(df.columns)) # (17000, 9)
+
+df_rows_dropped = df.drop(df.index[0:10000])
+print(len(df_rows_dropped)) # 7000
+
+df_cols_dropped = df.drop(["population", "households"], axis=1)
+print(len(df_cols_dropped.columns)) # 7
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>유용한 Pandas 함수들</h2>
+                    <div>
+                        <h3>sort_values</h3>
+                        <p>특정 열을 기준으로 정렬하여 반환</p>
+                        <pre class="python"><code data-trim data-noescape>
+df_sorted = df.sort_values(by="population")
+print(df_sorted)
+'''
+longitude  latitude  ...  median_income  median_house_value
+8232     -118.44     34.04  ...         0.5360            350000.0
+2990     -117.79     35.21  ...         2.3750            137500.0
+...          ...       ...  ...            ...                 ...
+12772    -121.79     36.64  ...         2.3087            118800.0
+2274     -117.42     33.35  ...         2.5729            134400.0
+[17000 rows x 9 columns]
+'''
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>유용한 Pandas 함수들</h2>
+                    <div>
+                        <h3>통계 함수들</h3>
+                        <pre class="python"><code data-trim data-noescape>
+print(df["households"].sum()) # 8520773.0
+print(df["households"].max()) # 6082.0
+print(df["households"].min()) # 1.0
+print(df["households"].mean()) # 501.2219411764706
+print(df["households"].median()) # 409.0
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>유용한 Pandas 함수들</h2>
+                    <div>
+                        <h3>describe</h3>
+                        <pre class="python"><code data-trim data-noescape>
+print(df["households"].describe())
+'''
+          longitude      latitude  ...  median_income  median_house_value
+count  17000.000000  17000.000000  ...   17000.000000        17000.000000
+mean    -119.562108     35.625225  ...       3.883578       207300.912353
+std        2.005166      2.137340  ...       1.908157       115983.764387
+min     -124.350000     32.540000  ...       0.499900        14999.000000
+25%     -121.790000     33.930000  ...       2.566375       119400.000000
+50%     -118.490000     34.250000  ...       3.544600       180400.000000
+75%     -118.000000     37.720000  ...       4.767000       265000.000000
+max     -114.310000     41.950000  ...      15.000100       500001.000000
+[8 rows x 9 columns]
+'''
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>유용한 Pandas 함수들</h2>
+                    <div>
+                        <h3>퀴즈</h3>
+                        <p>california 데이터셋에서 median_income이 2.0 이상인 지역의</p>
+                        <p>평균 median_house_value을 출력</p>
+                        <pre class="python"><code data-trim data-noescape>
+# 답은 다음장 링크에서 나옵니다.
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Pandas 소개</h2>
+                    <p>같이 코딩해봅시다 - Pandas 함수 2</p>
+                    <a href="https://drive.google.com/file/d/1yFFubUXWE59gqikyDCPAeSsKojqCFC0p/view?usp=sharing" target="_blank">코드</a>
+                </section>
+
+                <section>
+                    <h2>유용한 Pandas 함수들</h2>
+                    <div>
+                        <h3>사칙연산</h3>
+                        <pre class="python"><code data-trim data-noescape>
+df["non_bedrooms"] = df["total_rooms"] - df["total_bedrooms"]
+df["rooms_per_households"] = df["total_rooms"] / df["households"]
+print(df.loc[:, ["non_bedrooms", "rooms_per_households"]])
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>유용한 Pandas 함수들</h2>
+                    <div>
+                        <h3>isna</h3>
+                        <pre class="python"><code data-trim data-noescape>
+df_with_na = pd.DataFrame({"A": [None, 1], "B": [2, None]})
+print(df_with_na.isna())
+'''
+       A      B
+0   True  False
+1  False   True
+'''
+                        </code></pre>
+                    </div>
+                    <div class="fragment">
+                        <h3>fillna</h3>
+                        <pre class="python"><code data-trim data-noescape>
+print(df_with_na.fillna(0))
+'''
+     A    B
+0  0.0  2.0
+1  1.0  0.0
+'''
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>유용한 Pandas 함수들</h2>
+                    <div>
+                        <h3>isin</h3>
+                        <pre class="python"><code data-trim data-noescape>
+print(df["housing_median_age"].isin([3.0, 4.0]).sum()) # 207
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Pandas 소개</h2>
+                    <p>같이 코딩해봅시다 - Pandas 함수 3</p>
+                    <a href="https://colab.research.google.com/drive/13RO_6FtEFLpXS74rbD3VnbsGDoYY9zoi?usp=sharing" target="_blank">코드</a>
+                </section>
+
+                <section>
+                    <h2>NumPy 소개</h2>
+                    <div>
+                        <h3>ndarray</h3>
+                        <p>다차원 배열 클래스</p>
+                        <pre class="python"><code data-trim data-noescape>
+import numpy as np
+arr = np.array([2, 3, 1, 5, 4])
+print(arr) # array([2, 3, 1, 5, 4])
+print(type(arr)) # &lt;class 'numpy.ndarray'&gt;
+                        </code></pre>
+                    </div>
+                    <pre class="python fragment"><code data-trim data-noescape>
+multi_dim_arr = np.array([[1, 2, 3], [4, 5, 6]])
+print(multi_dim_arr)
+'''
+[[1 2 3]
+[4 5 6]]
+'''
+print(multi_dim_arr.ndim) # 2
+print(multi_dim_arr.shape) # (2, 3)
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>NumPy 소개</h2>
+                    <div>
+                        <h3>ndarray</h3>
+                        <p>Pandas Series로부터 ndarray 가져오기</p>
+                        <pre class="python"><code data-trim data-noescape>
+import pandas as pd
+s = pd.Series([2, 3, 1, 5, 4])
+print(s.values) # [2 3 1 5 4]
+print(type(s.values)) # &lt;class 'numpy.ndarray'&gt;
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>NumPy 소개</h2>
+                    <div>
+                        <h3>indexing</h3>
+                        <pre class="python"><code data-trim data-noescape>
+arr = np.array([[2, 3, 4], [5, 6, 7]])
+print(arr[0, 0]) # 2
+print(arr[1, 2]) # 7
+print(arr[-1, 2]) # 7
+arr_2 = np.array([3, 1, 2, 5, 7, 9, 10])
+print(arr_2[arr_2 > 5]) # [7 9 10]
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>NumPy 소개</h2>
+                    <div>
+                        <h3>slicing</h3>
+                        <pre class="python"><code data-trim data-noescape>
+arr = np.array([[2, 3, 4], [5, 6, 7]])
+print(arr[0, :]) # [2, 3, 4]
+print(arr[0, 1:]) # [3, 4]
+print(arr[:1, 1]) # [3]
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>NumPy 소개</h2>
+                    <p>같이 코딩해봅시다 - NumPy 소개</p>
+                    <a href="https://colab.research.google.com/drive/1XjlfEWq-HisrcW9DWK3F4Zqxpd155W17?usp=sharing" target="_blank">코드</a>
+                </section>
+
+                <section>
+                    <h2>유용한 NumPy 함수들</h2>
+                    <div>
+                        <h3>arange</h3>
+                        <pre class="python"><code data-trim data-noescape>
+arr = np.arange(1, 6)
+print(arr) # [1, 2, 3, 4, 5]
+                        </code></pre>
+                    </div>
+                    <div class="fragment">
+                        <h3>zeros</h3>
+                        <pre class="python"><code data-trim data-noescape>
+arr = np.zeros((2, 2))
+print(arr)
+'''
+[[0. 0.]
+[0. 0.]]
+'''
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>유용한 NumPy 함수들</h2>
+                    <div>
+                        <h3>full</h3>
+                        <pre class="python"><code data-trim data-noescape>
+arr = np.full((2, 2), 1)
+print(arr)
+'''
+[[1 1]
+[1 1]]
+'''
+                        </code></pre>
+                    </div>
+                    <div class="fragment">
+                        <h3>eye</h3>
+                        <pre class="python"><code data-trim data-noescape>
+arr = np.eye(2)
+print(arr)
+'''
+[[1. 0.]
+[0. 1.]]
+'''
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>유용한 NumPy 함수들</h2>
+                    <div>
+                        <h3>binary operations</h3>
+                        <pre class="python"><code data-trim data-noescape>
+arr_1 = np.array([[2, 3], [1, 4]])
+arr_2 = np.array([[-1, 2], [4, 3]])
+
+print(np.add(arr_1, arr_2))
+# [[1 5]
+# [5 7]]
+print(np.subtract(arr_1, arr_2))
+# [[ 3 1]
+# [-3 1]]
+print(np.matmul(arr_1, arr_2))
+# array([[10, 13],
+# [15, 14]])
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>유용한 NumPy 함수들</h2>
+                    <div>
+                        <h3>통계 함수들</h3>
+                        <pre class="python"><code data-trim data-noescape>
+arr = np.array([[2, 3, 7], [1, 4, 5]])
+print(arr.max()) # 7
+print(arr.max(axis=0)) # [2 4 7]
+print(arr.max(axis=1)) # [7 5]
+print(arr.argmax(axis=1)) # [2 2]
+
+print(arr.min(axis=0)) # [1 3 5]
+print(arr.argmin(axis=0)) # [1 0 1]
+
+print(arr.sum()) # 22
+print(arr.sum(axis=0)) # [ 3 7 12]
+print(arr.mean(axis=1)) # [4. 3.33333333]
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>유용한 NumPy 함수들</h2>
+                    <div>
+                        <h3>Shaping operations</h3>
+                        <pre class="python"><code data-trim data-noescape>
+arr = np.array([[2, 3, 1], [1, 2, -1]])
+print(arr.shape) # (2, 3)
+arr_reshaped = arr.reshape((3, 2))
+print(arr_reshaped)
+# [[ 2 3]
+# [ 1 1]
+# [ 2 -1]]
+arr_flattened = arr.flatten()
+print(arr_flattened) # [ 2 3 1 1 2 -1]
+arr_transposed = arr.transpose()
+# array([[ 2, 1],
+# [ 3, 2],
+# [ 1, -1]])
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>유용한 NumPy 함수들</h2>
+                    <div>
+                        <h3>Numerical operations</h3>
+                        <pre class="python"><code data-trim data-noescape>
+arr = np.array([2.2, 3.0, 1.3, 4.2])
+print(np.exp(arr)) # [ 9.0250135 20.08553692 3.66929667 66.68633104]
+print(np.log(arr)) # [ 0.78845736 1.09861229 0.26236426 1.43508453]
+print(np.log2(arr)) # [ 1.13750352 1.5849625 0.37851162 2.07038933]
+print(np.sqrt(arr)) # [1.4832397 1.73205081 1.14017543 2.04939015]
+print(np.power(arr, 3)) # [10.648 27. 2.197 74.088]
+print(np.ceil(arr)) # [3. 3. 2. 5.]
+print(np.floor(arr)) # [2. 3. 1. 4.]
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>유용한 NumPy 함수들</h2>
+                    <p>같이 코딩해봅시다 - Numpy 함수</p>
+                    <a href="https://colab.research.google.com/drive/1agiEXDHhkWYTeU4uWNIg3fCSvE2j1MZk?usp=sharing" target="_blank">코드</a>
                 </section>
 
 			</div>
