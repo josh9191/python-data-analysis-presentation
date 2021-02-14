@@ -27,10 +27,10 @@
                         <a href="#/3" style="display: block;">개발환경 설정</a>
                         <a href="#/6" style="display: block;">Python 자료형</a>
                         <a href="#/25" style="display: block;">조건문</a>
-                        <a href="#/2" style="display: block;">반복문</a>
-                        <a href="#/2" style="display: block;">함수</a>
-                        <a href="#/2" style="display: block;">클래스</a>
-                        <a href="#/2" style="display: block;">모듈</a>
+                        <a href="#/29" style="display: block;">반복문</a>
+                        <a href="#/38" style="display: block;">함수</a>
+                        <a href="#/44" style="display: block;">클래스</a>
+                        <a href="#/49" style="display: block;">모듈</a>
                     </div>
                 </section>
 
@@ -831,11 +831,11 @@ print(pow(3, 2)) # 9.0
                 <section>
                     <h1>Pandas/NumPy로 &nbsp; 데이터 다루기</h1>
                     <div class="fragment">
-                        <a href="#/1" style="display: block;">Pandas 소개</a>
-                        <a href="#/3" style="display: block;">유용한 Pandas 함수들</a>
-                        <a href="#/6" style="display: block;">NumPy 소개</a>
-                        <a href="#/25" style="display: block;">유용한 NumPy 함수들</a>
-                        <a href="#/2" style="display: block;">Pandas/Numpy를 이용한 데이터 전처리</a>
+                        <a href="#/53" style="display: block;">Pandas 소개</a>
+                        <a href="#/56" style="display: block;">유용한 Pandas 함수들</a>
+                        <a href="#/75" style="display: block;">NumPy 소개</a>
+                        <a href="#/80" style="display: block;">유용한 NumPy 함수들</a>
+                        <a href="#/87" style="display: block;">데이터 전처리</a>
                     </div>
                 </section>
 
@@ -876,17 +876,14 @@ import pandas as pd
 data = {"A": [1, 2], "B": ["a", "b"], "C": [2.3, 1.2]}
 df = pd.DataFrame(data)
 print(df)
-'''
-   A  B  C
-0  1  a  2.3
-1  2  b  1.2
-'''
+#    A  B  C
+# 0  1  a  2.3
+# 1  2  b  1.2
+
 print(df["A"])
-'''
-0  1
-1  2
-Name: A, dtype: int64
-'''
+# 0  1
+# 1  2
+# Name: A, dtype: int64
                         </code></pre>
                     </div>
                 </section>
@@ -1154,8 +1151,7 @@ max     -114.310000     41.950000  ...      15.000100       500001.000000
                     <h2>유용한 Pandas 함수들</h2>
                     <div>
                         <h3>퀴즈</h3>
-                        <p>california 데이터셋에서 median_income이 2.0 이상인 지역의</p>
-                        <p>평균 median_house_value을 출력</p>
+                        <p>california 데이터셋에서 median_income이<br>2.0 이상인 지역의 평균 median_house_value을 출력</p>
                         <pre class="python"><code data-trim data-noescape>
 # 답은 다음장 링크에서 나옵니다.
                         </code></pre>
@@ -1428,6 +1424,252 @@ print(np.floor(arr)) # [2. 3. 1. 4.]
                     <h2>유용한 NumPy 함수들</h2>
                     <p>같이 코딩해봅시다 - Numpy 함수</p>
                     <a href="https://colab.research.google.com/drive/1agiEXDHhkWYTeU4uWNIg3fCSvE2j1MZk?usp=sharing" target="_blank">코드</a>
+                </section>
+
+                <section>
+                    <h2>데이터 전처리</h2>
+                    <div>
+                        <h3>HMEQ(Home Equity) 데이터셋</h3>
+                        <img src="images/05-hmeq-dataset.png" height="300">
+                        <p>직업, 총대출액, 대출사유 등에 따른 대출 상환여부(Bad)</p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>데이터 전처리</h2>
+                    <div>
+                        <h3>HMEQ(Home Equity) 데이터셋</h3>
+                        <p>데이터 종류</p>
+                        <ul>
+                            <li>수치형 - 수치로 표현되는 데이터
+                                <ul>
+                                    <li>연속형 - 연속적인 값을 갖는 데이터(키, 몸무게)</li>
+                                    <li>이산형 - 이산적인 값을 갖는 데이터(개수, 명수)</li>
+                                </ul>
+                            </li>
+                            <li>범주형 - 범주로 나눌 수 있는 데이터
+                                <ul>
+                                    <li>명목형 - 순서없이 분류되는 데이터(성별, 혈액형)</li>
+                                    <li>순서형 - 순서있이 분류되는 데이터(선호도)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>데이터 전처리</h2>
+                    <div>
+                        <h3>HMEQ(Home Equity) 데이터셋</h3>
+                        <p>HMEQ 데이터셋 항목</p>
+                        <ul>
+                            <li>연속형 - CLAge, CLNo, DebtInc, Delinq, Derog, Loan, MortDue, nInq, Value, YoJ</li>
+                            <li>이산형 - Bad(종속변수 혹은 Target)</li>
+                            <li>명목형 - Job, Reason</li>
+                        </ul>
+                    </div>
+                    <p class="fragment" style="color: darkorange;">데이터 전처리시, 범주형과 이산형은 동일하게 처리함!</p>
+                </section>
+
+                <section>
+                    <h2>데이터 전처리</h2>
+                    <div>
+                        <h3>결측치 처리 - 확인</h3>
+                        <pre class="python"><code data-trim data-noescape>
+import pandas as pd
+import numpy as np
+base_url = "http://support.sas.com"
+url = base_url + "/documentation/onlinedoc/viya/exampledatasets/hmeq.csv"
+# read data set
+df = pd.read_csv(url)
+print(df.isna().sum())
+'''
+BAD 0
+...
+CLNO 222
+DEBTINC 1267
+dtype: int64
+'''
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>데이터 전처리</h2>
+                    <div>
+                        <h3>결측치 처리 방법 1 - 제거</h3>
+                        <pre class="python"><code data-trim data-noescape>
+# ...continued
+print(len(df)) # 5960
+df_dropped = df.dropna()
+print(len(df_dropped)) # 3364
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>데이터 전처리</h2>
+                    <div>
+                        <h3>결측치 처리 방법 2 - 치환</h3>
+                        <pre class="python"><code data-trim data-noescape>
+# ...continued
+categorical_columns = ['REASON', 'JOB']
+numeric_columns = [col for col in df.columns \
+                    if col not in categorical_columns and col != 'BAD']
+
+for col in categorical_columns:
+    # replace with mode value
+    df[col].fillna(df[col].value_counts().idxmax(), inplace=True)
+
+for col in numeric_columns:
+    # replace with median value
+    df[col].fillna(df[col].median(), inplace=True)
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>데이터 전처리</h2>
+                    <div>
+                        <h3>표준화</h3>
+                        <pre class="python"><code data-trim data-noescape>
+print(df.head(n=2))
+'''
+BAD LOAN MORTDUE ... CLNO DEBTINC
+0 1 1100 ... 9.0 34.818262
+1 1 1300 ... 14.0 34.818262
+'''
+for col in numeric_columns:
+    df[col] = (df[col] - df[col].mean()) / df[col].std()
+print(df.head(n=2))
+'''
+BAD LOAN MORTDUE ... CLNO DEBTINC
+0 1 -1.562168 ... -1.230775 0.106954
+1 1 -1.544323 ... -0.728328 0.106954
+'''
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>데이터 전처리</h2>
+                    <div>
+                        <h3>범주형(+ 이산형) 변수 처리</h3>
+                        <pre class="python"><code data-trim data-noescape>
+encoded_categorical_df = pd.get_dummies(df[categorical_columns])
+
+# replace with newly encoded columns
+df_wo_categorical = df.drop(categorical_columns, axis=1)
+df = pd.concat([df_wo_categorical, encoded_categorical_df], axis=1)
+print(df.head(n=2))
+'''
+BAD ... JOB_Mgr JOB_Office JOB_Other JOB_ProfExe JOB_Sales JOB_Self
+0 1 ... 0 0 1 0 0 0
+1 1 ... 0 0 1 0 0 0
+'''
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>데이터 전처리</h2>
+                    <p>같이 코딩해봅시다 - 데이터 전처리</p>
+                    <a href="https://colab.research.google.com/drive/1CK4mXIhJ9xpoa5ScljfY3w2jZneNyoup?usp=sharing" target="_blank">코드</a>
+                </section>
+
+                <section>
+                    <h1>Scikit-Learn으로<br>모형 만들기</h1>
+                    <div class="fragment">
+                        <a href="#/97" style="display: block;">ML 모형 개발 파이프라인</a>
+                        <a href="#/98" style="display: block;">Scikit-Learn 모형 개발</a>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>ML 모형 개발 파이프라인</h2>
+                    <ol>
+                        <li>데이터 전처리</li>
+                        <li>개발 - 검증 - 테스트 데이터 분리</li>
+                        <li>개발 데이터로 모형 적합</li>
+                        <li>검증 데이터로 적합된 모형 평가(만약 평가 기준 미충족시 재적합)</li>
+                        <li>검증 데이터를 통한 평가 완료 후, 테스트 데이터를 통한 모형 평가(평가 기준 미충족시 재적합)</li>
+                        <li>모형 개발 완료</li>
+                    </ol>
+                </section>
+
+                <section>
+                    <h2>Scikit-Learn 모형 개발</h2>
+                    <div>
+                        <h3>개발 - 검증 - 테스트 데이터 분리(continued)</h3>
+                        <pre class="python"><code data-trim data-noescape>
+from sklearn.model_selection import train_test_split
+df_x = df.drop(['BAD'], axis=1)
+df_y = df['BAD']
+# rule-of-thumb -> training : validation : test = 0.6 : 0.2 : 0.2
+# 개발 데이터셋 생성
+X_train, X_val, y_train, y_val = train_test_split(df_x.values, 
+                                    df_y.values, test_size=0.4)
+# 검증, 테스트 데이터셋 생성
+X_val, X_test, y_val, y_test = train_test_split(X_val, y_val,
+                                    test_size=0.5)
+print(len(X_train), len(X_val), len(X_test)) # 3576 1192 1192
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Scikit-Learn 모형 개발</h2>
+                    <div>
+                        <h3>개발 데이터로 모형 적합</h3>
+                        <pre class="python"><code data-trim data-noescape>
+from sklearn.linear_model import LogisticRegression
+
+# Logistic regression model
+log_clf = LogisticRegression(penalty='l1', solver='liblinear',
+                            random_state=42)
+log_clf.fit(X_train, y_train)
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Scikit-Learn 모형 개발</h2>
+                    <div>
+                        <h3>검증 데이터로 적합된 모형 평가</h3>
+                        <pre class="python"><code data-trim data-noescape>
+from sklearn.metrics import log_loss, accuracy_score
+
+val_predictions = log_clf.predict(X_val)
+val_probs = log_clf.predict_proba(X_val)
+
+val_acc = accuracy_score(y_val, val_predictions)
+val_loss = log_loss(y_val, val_probs)
+
+print(f"Val. Accuracy: {val_acc:.2%}, Val. Loss: {val_loss}")
+# Val. Accuracy: 82.38%, Val. Loss: 0.4119370650603029
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Scikit-Learn 모형 개발</h2>
+                    <div>
+                        <h3>테스트 데이터로 적합된 모형 평가</h3>
+                        <pre class="python"><code data-trim data-noescape>
+test_predictions = log_clf.predict(X_test)
+test_probs = log_clf.predict_proba(X_test)
+
+test_acc = accuracy_score(y_test, test_predictions)
+test_loss = log_loss(y_test, test_probs)
+
+print(f"Test Accuracy: {test_acc:.2%}, Test Loss: {test_loss}")
+# Test Accuracy: 83.05%, Test Loss: 0.4064703808863552
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h1>감사합니다.</h1>
                 </section>
 
 			</div>
