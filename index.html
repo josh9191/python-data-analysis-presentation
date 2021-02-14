@@ -901,9 +901,8 @@ print(df["A"])
                         <p>CSV 파일을 DataFrame으로 읽어들임</p>
                         <pre class="python"><code data-trim data-noescape>
 import pandas as pd
-base_url = "https://download.mlcc.google.com"
-csv_file_url = base_url + "/mledu-datasets/california_housing_train.csv"
-df = pd.read_csv(csv_file_url, sep=",")
+url = "https://download.mlcc.google.com/mledu-datasets/california_housing_train.csv"
+df = pd.read_csv(url, sep=",")
 print(df)
 '''
        longitude  latitude  ...  median_income  median_house_value
@@ -1478,8 +1477,7 @@ print(np.floor(arr)) # [2. 3. 1. 4.]
                         <pre class="python"><code data-trim data-noescape>
 import pandas as pd
 import numpy as np
-base_url = "http://support.sas.com"
-url = base_url + "/documentation/onlinedoc/viya/exampledatasets/hmeq.csv"
+url = "http://support.sas.com/documentation/onlinedoc/viya/exampledatasets/hmeq.csv"
 # read data set
 df = pd.read_csv(url)
 print(df.isna().sum())
@@ -1666,6 +1664,12 @@ print(f"Test Accuracy: {test_acc:.2%}, Test Loss: {test_loss}")
 # Test Accuracy: 83.05%, Test Loss: 0.4064703808863552
                         </code></pre>
                     </div>
+                </section>
+
+                <section>
+                    <h2>Scikit-Learn 모형 개발</h2>
+                    <p>같이 코딩해봅시다 - Scikit-Learn 모형 개발</p>
+                    <a href="https://colab.research.google.com/drive/1JDwR29e3y9C7MlWP4nb-bIgDC1JkkGIG?usp=sharing" target="_blank">코드</a>
                 </section>
 
                 <section>

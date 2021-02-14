@@ -5,3 +5,7 @@
 .reveal .fragment {
     display: block;
 }
+
+.reveal section pre code {
+    font-size: 0.7em;
+}
